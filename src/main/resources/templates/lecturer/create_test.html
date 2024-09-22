@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Test</title>
+    <link rel="stylesheet" href="/css/lecturer.css">
+</head>
+<body>
+<div class="container">
+    <h1>Create a New Test</h1>
+    <form th:action="@{/lecturer/create_test}" method="post">
+        <label for="name">Test Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="startDate" required>
+
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="endDate" required>
+
+        <button type="submit">Create Test</button>
+    </form>
+</div>
+</body>
+</html>

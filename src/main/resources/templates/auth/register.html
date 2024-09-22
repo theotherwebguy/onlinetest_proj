@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<section>
+  <form id="registerForm" action="/auth/register" method="post">
+    <h1>Sign Up</h1>
+
+    <!-- Error message -->
+    <div th:if="${error}" th:text="${error}" class="error"></div>
+
+    <!-- Full Name -->
+    <div class="inputbox">
+      <ion-icon name="person-outline"></ion-icon>
+      <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+      <label for="fullName">Full Name</label>
+    </div>
+
+    <!-- Username -->
+    <div class="inputbox">
+      <ion-icon name="mail-outline"></ion-icon>
+      <input type="text" id="username" name="username" placeholder="Choose a username" required>
+      <label for="username">Username</label>
+    </div>
+
+    <!-- Password -->
+    <div class="inputbox">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+      <label for="password">Password</label>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="inputbox">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <input type="password" id="passwordConfirm" name="passwordConfirm" placeholder="Confirm your password" required>
+      <label for="passwordConfirm">Confirm Password</label>
+    </div>
+
+    <!-- Role Selection -->
+    <div class="inputbox">
+      <ion-icon name="person-outline"></ion-icon>
+      <select id="role" name="role" required>
+        <option value="" disabled selected>Select your role</option>
+        <option value="STUDENT">Student</option>
+        <option value="LECTURER">Lecturer</option>
+      </select>
+      <label for="role">Role</label>
+    </div>
+
+    <button type="submit" id="submit">Sign Up</button>
+
+    <div class="register">
+      <p>Already have an account? <a href="/auth/login">Log In</a></p>
+    </div>
+  </form>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const submitButton = document.getElementById('submit');
+    submitButton.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevent default form submission
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('passwordConfirm').value;
+      const fullName = document.getElementById('fullName').value;
+      const role = document.getElementById('role').value;
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+      }
+
+      const data = {
+        username,
+        fullName,
+        password,
+        role
+      };
+
+      const jsonData = JSON.stringify(data);
+
+      fetch('/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: jsonData
+      })
+              .then(response => {
+                if (response.ok) {
+                  alert('Registration successful');
+                  window.location.href = '/auth/login'; // Redirect to login page
+                } else {
+                  alert('Registration failed');
+                }
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+    });
+  });
+</script>
+</body>
+</html>

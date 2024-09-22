@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lecturer Tests</title>
+</head>
+<body>
+<h1>Your Created Tests</h1>
+
+<table border="1">
+    <tr>
+        <th>Test Name</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="test : ${tests}">
+        <td th:text="${test.name}">Test Name</td>
+        <td th:text="${test.description}">Description</td>
+        <td th:text="${test.startDate}">Start Date</td>
+        <td th:text="${test.endDate}">End Date</td>
+        <td>
+            <a th:href="@{/lecturer/add_questions/{testId}(testId=${test.id})}">Add Questions</a>
+            <a th:href="@{/lecturer/view_grades/{testId}(testId=${test.id})}">View Grades</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

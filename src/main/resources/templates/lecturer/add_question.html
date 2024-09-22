@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Questions</title>
+    <link rel="stylesheet" href="/css/lecturer.css">
+</head>
+<body>
+<div class="container">
+    <h1>Add Questions to Test</h1>
+    <form th:action="@{'/lecturer/add_questions/' + ${testId}}" method="post">
+        <div class="form-group">
+            <label for="questionText">Question:</label>
+            <input type="text" id="questionText" name="questionText" required>
+        </div>
+
+        <div class="form-group">
+            <label for="answer1">Answer 1:</label>
+            <input type="text" id="answer1" name="answerOptions[0]" required>
+        </div>
+
+        <div class="form-group">
+            <label for="answer2">Answer 2:</label>
+            <input type="text" id="answer2" name="answerOptions[1]" required>
+        </div>
+
+        <div class="form-group">
+            <label for="answer3">Answer 3:</label>
+            <input type="text" id="answer3" name="answerOptions[2]" required>
+        </div>
+
+        <div class="form-group">
+            <label for="answer4">Answer 4:</label>
+            <input type="text" id="answer4" name="answerOptions[3]" required>
+        </div>
+
+        <div class="form-group">
+            <label for="correctAnswerIndex">Correct Answer (Index):</label>
+            <input type="number" id="correctAnswerIndex" name="correctAnswerIndex" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Question</button>
+    </form>
+</div>
+</body>
+</html>

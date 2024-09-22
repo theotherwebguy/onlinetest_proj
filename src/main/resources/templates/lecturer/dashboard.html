@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lecturer Dashboard</title>
+    <link rel="stylesheet" href="/css/lecturer.css">
+</head>
+<body>
+<div class="container">
+    <h1>Lecturer Dashboard</h1>
+    <a href="/lecturer/create_test" class="btn btn-primary">Create New Test</a>
+
+    <h2>Your Tests</h2>
+    <ul>
+        <li th:each="test : ${tests}">
+            <span th:text="${test.name}"></span>
+            <a th:href="@{/lecturer/add_questions/{id}(id=${test.id})}">Add Questions</a>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
