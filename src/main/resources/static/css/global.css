@@ -1,0 +1,41 @@
+/* General Page Styling */
+:root {
+    --primary-color: #2196f3;
+    --secondary-color: #1976d2;
+    --background-color: #f4f4f9;
+    --text-color: #4a4a4a;
+    --font-family: Arial, sans-serif;
+    --spacing: 16px;
+    --border-radius: 8px;
+}
+
+/* Apply global styles */
+body {
+    font-family: var(--font-family), serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    color: var(--text-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius);
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}

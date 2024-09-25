@@ -1,0 +1,19 @@
+.breadcrumbs {
+    background-color: var(--background-color);
+    padding: var(--spacing);
+    border-bottom: 1px solid #ccc;
+}
+
+.breadcrumbs ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.breadcrumbs li {
+    color: var(--primary-color);
+}
+
+.breadcrumbs li a {
+    color: var(--primary-color);
+}

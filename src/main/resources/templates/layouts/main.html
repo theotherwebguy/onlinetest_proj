@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/breadcrumbs.css">
+    <title>Online Test System</title>
+</head>
+<body>
+<!-- Include Navbar -->
+<th:block th:replace="fragments/navbar :: navbar"></th:block>
+
+<!-- Include Breadcrumbs -->
+<th:block th:replace="fragments/breadcrumbs :: breadcrumbs"></th:block>
+
+<!-- Main Content -->
+<main>
+    <div class="container">
+        <!-- Define a content fragment -->
+        <th:block th:fragment="content">
+            <!-- Content will be replaced here -->
+        </th:block>
+    </div>
+</main>
+
+<!-- Include Footer -->
+<th:block th:replace="fragments/footer :: footer"></th:block>
+</body>
+</html>

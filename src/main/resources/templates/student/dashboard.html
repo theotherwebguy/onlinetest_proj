@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="/css/student_dashboard.css">
+</head>
+<body>
+
+<!-- Navbar (Optional) -->
+<header>
+    <nav>
+        <ul>
+            <li><a href="/student/dashboard">Dashboard</a></li>
+            <li><a href="/student/results">View Results</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <!-- Greeting Section -->
+    <h1>Welcome, <span th:text="${fullName}">Student Name</span>!</h1>
+
+    <!-- Available Tests Section -->
+    <section>
+        <h2>Available Tests</h2>
+
+        <!-- Display message if no tests are available -->
+        <p th:if="${#lists.isEmpty(tests)}">No available tests at the moment. Please check back later!</p>
+
+        <!-- List of available tests -->
+        <ul>
+            <li th:each="test : ${tests}">
+                <a th:href="@{/student/take_test/{id}(id=${test.id})}" th:text="${test.name}"></a>
+                <p th:text="'Start Date: ' + ${test.startDate} + ', End Date: ' + ${test.endDate}"></p>
+                <p th:text="'Description: ' + ${test.description}"></p>
+            </li>
+        </ul>
+    </section>
+
+    <!-- View Results Link -->
+    <section>
+        <a href="/student/results" class="btn">View Your Results</a>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Online Test System</p>
+</footer>
+
+</body>
+</html>

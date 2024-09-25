@@ -1,0 +1,9 @@
+<!-- resources/templates/fragments/breadcrumbs.html -->
+<nav th:fragment="breadcrumbs" class="breadcrumbs">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li th:each="breadcrumb : ${breadcrumbs}">
+            <span th:text="${breadcrumb}"></span>
+        </li>
+    </ul>
+</nav>

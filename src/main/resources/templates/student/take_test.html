@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Take Test</title>
+    <link rel="stylesheet" href="/css/student_test.css">
+    <script src="/js/test_validation.js" defer></script>
+</head>
+<body>
+
+<h1 th:text="${test.name}">Test Name</h1>
+
+<!-- Display error message if any -->
+<div th:if="${error}" class="error-message">
+    <p th:text="${error}"></p>
+</div>
+
+<!-- Show how many questions are left unanswered -->
+<div id="questions-left">
+    Questions left: <span id="remaining-count"></span>
+</div>
+
+<!-- Form to submit the test answers -->
+<form th:action="@{/student/submit_test/{testId}(testId=${test.id})}" method="post">
+
+    <!-- Loop through the test questions -->
+    <div th:each="question : ${test.questions}" class="question">
+        <p th:text="${question.questionText}"></p>
+
+        <!-- Loop through answer options -->
+        <div th:each="option, stat : ${question.answerOptions}">
+            <label>
+                <!-- Ensure the radio button name is unique for each question -->
+                <input type="radio" th:name="'selectedAnswers[' + ${question.id} + ']'" th:value="${stat.index}" required>
+                <span th:text="${option}"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit">Submit Test</button>
+</form>
+
+</body>
+</html>

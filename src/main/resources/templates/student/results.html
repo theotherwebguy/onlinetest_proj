@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Test Results</title>
+</head>
+<body>
+<h1>Test Results</h1>
+<ul>
+    <li th:each="result : ${results}">
+        <span th:text="${result.test.name}">Test Name</span> -
+        <span th:text="${result.score}">Score</span> -
+        <span th:text="${result.passed ? 'Passed' : 'Failed'}"></span>
+    </li>
+</ul>
+</body>
+</html>

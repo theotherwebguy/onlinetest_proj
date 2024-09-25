@@ -1,0 +1,28 @@
+.navbar {
+    background-color: var(--primary-color);
+    padding: var(--spacing);
+}
+
+.navbar .navbar-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+
+.navbar .welcome-message {
+    color: white;
+}
+
+.navbar .logout-icon {
+    background-color: white;
+    color: var(--primary-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.navbar .logout-icon:hover {
+    background-color: var(--secondary-color);
+    color: white;
+}

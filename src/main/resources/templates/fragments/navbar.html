@@ -1,0 +1,9 @@
+<!-- resources/templates/fragments/navbar.html -->
+<nav th:fragment="navbar" class="navbar">
+    <div class="container">
+        <ul class="navbar-links">
+            <li class="welcome-message">Hi, <span th:text="${#session.getAttribute('fullName')}"></span></li>
+            <li><a href="/auth/logout" class="logout-icon">Logout</a></li>
+        </ul>
+    </div>
+</nav>

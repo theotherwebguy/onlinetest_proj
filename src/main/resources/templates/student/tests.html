@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Available Tests</title>
 </head>
 <body>
-
+<h1>Available Tests</h1>
+<ul>
+    <li th:each="test : ${tests}">
+        <a th:href="@{/student/take_test/{id}(id=${test.id})}" th:text="${test.name}"></a>
+    </li>
+</ul>
 </body>
 </html>

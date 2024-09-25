@@ -46,6 +46,7 @@ public class ContentController {
             if (userService.validatePassword(password, user.getPassword())) {
                 // Store username in the session after successful login
                 session.setAttribute("username", user.getUsername());
+                session.setAttribute("fullName", user.getFullName());
 
                 // Redirect based on role
                 if (user.getRole().name().equalsIgnoreCase("STUDENT")) {
